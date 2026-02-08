@@ -1,0 +1,308 @@
+/* ===== إضافة الصور في الأماكن المحددة ===== */
+
+/* ===== القسم 1: برنامج النخبة ===== */
+.program-section {
+    margin: 40px 0;
+    padding: 30px;
+    background: #1a1a1a;
+    border-radius: 12px;
+    border: 1px solid #333;
+    position: relative;
+    overflow: hidden;
+}
+
+/* إضافة الصورة 1 في الخلفية */
+.program-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100%;
+    background-image: url('https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+/* إضافة صورة رياضيين في القسم 1 */
+.program-section .week-program-image {
+    position: absolute;
+    top: 50%;
+    left: 30px;
+    transform: translateY(-50%);
+    width: 250px;
+    height: 350px;
+    background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    border: 3px solid #dc2626;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    display: none; /* مخفية على الجوال */
+}
+
+/* رقم القسم 1 */
+.program-section .section-number {
+    display: inline-block;
+    background: #dc2626;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin: 0 auto 20px;
+    position: relative;
+    z-index: 2;
+}
+
+/* محتوى القسم 1 */
+.program-section .program-content {
+    position: relative;
+    z-index: 2;
+    padding-left: 280px; /* ترك مساحة للصورة */
+}
+
+/* ===== القسم 2: أهداف ومميزات البرنامج ===== */
+.objectives-section {
+    margin: 40px 0;
+    padding: 30px;
+    background: #1a1a1a;
+    border-radius: 12px;
+    border: 1px solid #333;
+    position: relative;
+    overflow: hidden;
+}
+
+/* إضافة الصورة 2 في الخلفية */
+.objectives-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://images.unsplash.com/photo-1549060279-7e168fce7090?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.08;
+    z-index: 0;
+}
+
+/* إضافة صورة أهداف في القسم 2 */
+.objectives-section .goals-image {
+    position: absolute;
+    top: 100px;
+    right: 30px;
+    width: 200px;
+    height: 200px;
+    background-image: url('https://images.unsplash.com/photo-1536922246289-88c42f957773?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    border: 3px solid #22c55e;
+    box-shadow: 0 10px 30px rgba(34, 197, 94, 0.3);
+    z-index: 1;
+    display: none; /* مخفية على الجوال */
+}
+
+/* رقم القسم 2 */
+.objectives-section .section-number {
+    display: inline-block;
+    background: #dc2626;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin: 0 auto 20px;
+    position: relative;
+    z-index: 2;
+}
+
+/* محتوى القسم 2 */
+.objectives-section .objectives-content {
+    position: relative;
+    z-index: 2;
+    padding-right: 230px; /* ترك مساحة للصورة */
+}
+
+/* إضافة صور في كل هدف */
+.objectives-section .goal-item {
+    position: relative;
+    padding-right: 60px;
+    margin-bottom: 20px;
+}
+
+.objectives-section .goal-item::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50px;
+    height: 50px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    border: 2px solid #333;
+}
+
+/* صور خاصة لكل هدف */
+.objectives-section .goal-item:nth-child(1)::before {
+    background-image: url('https://images.unsplash.com/photo-1534367507877-0edd93bd013b?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80');
+}
+
+.objectives-section .goal-item:nth-child(2)::before {
+    background-image: url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80');
+}
+
+.objectives-section .goal-item:nth-child(3)::before {
+    background-image: url('https://images.unsplash.com/photo-1549060279-7e168fce7090?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80');
+}
+
+.objectives-section .goal-item:nth-child(4)::before {
+    background-image: url('https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80');
+}
+
+/* إضافة صور في المميزات */
+.objectives-section .feature-box {
+    position: relative;
+    padding-top: 80px;
+}
+
+.objectives-section .feature-box::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 60px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    border: 2px solid #dc2626;
+}
+
+/* صور خاصة لكل ميزة */
+.objectives-section .feature-box:nth-child(1)::before {
+    background-image: url('https://images.unsplash.com/photo-1599058917212-d750089bc07e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80');
+}
+
+.objectives-section .feature-box:nth-child(2)::before {
+    background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80');
+}
+
+.objectives-section .feature-box:nth-child(3)::before {
+    background-image: url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80');
+}
+
+.objectives-section .feature-box:nth-child(4)::before {
+    background-image: url('https://images.unsplash.com/photo-1486218119243-13883505764c?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80');
+}
+
+/* ===== تحسينات إضافية ===== */
+
+/* تأثير hover على الصور */
+.program-section .week-program-image:hover,
+.objectives-section .goals-image:hover {
+    transform: translateY(-50%) scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+.objectives-section .goals-image:hover {
+    transform: scale(1.05);
+}
+
+/* خطوط فاصلة */
+.section-divider {
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #dc2626, #ef4444);
+    margin: 0 auto 20px;
+}
+
+/* تحسين النص */
+.program-content h2,
+.objectives-content h2 {
+    color: #ffffff;
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.program-content h3,
+.objectives-content h3 {
+    color: #ef4444;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #333;
+}
+
+/* ===== تصميم متجاوب ===== */
+@media (min-width: 992px) {
+    .program-section .week-program-image {
+        display: block;
+    }
+    
+    .objectives-section .goals-image {
+        display: block;
+    }
+    
+    .program-section .program-content {
+        padding-left: 280px;
+    }
+    
+    .objectives-section .objectives-content {
+        padding-right: 230px;
+    }
+}
+
+@media (max-width: 991px) {
+    .program-section .program-content {
+        padding-left: 0;
+    }
+    
+    .objectives-section .objectives-content {
+        padding-right: 0;
+    }
+    
+    .objectives-section .goal-item {
+        padding-right: 0;
+        padding-top: 60px;
+    }
+    
+    .objectives-section .goal-item::before {
+        right: 50%;
+        transform: translateX(50%);
+        top: -40px;
+    }
+}
+
+/* ===== مؤشرات الأرقام ===== */
+.section-number {
+    position: relative;
+}
+
+.section-number::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 3px;
+    background: #ef4444;
+    border-radius: 2px;
+}

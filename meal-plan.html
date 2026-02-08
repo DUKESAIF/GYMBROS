@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مساعد التخطيط الغذائي الذكي | GYMBROS</title>
+    <style>
+        :root {
+            --primary: #000000;
+            --secondary: #dc2626;
+            --accent: #ef4444;
+            --light: #111111;
+            --dark: #000000;
+            --text: #ffffff;
+            --text-secondary: #d1d5db;
+            --gray: #374151;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --danger: #dc2626;
+            --gradient: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+            --shadow: 0 10px 25px rgba(220, 38, 38, 0.2);
+            --radius: 12px;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', 'Segoe UI', sans-serif;
+        }
+        
+        body {
+            background-color: var(--primary);
+            color: var(--text);
+            line-height: 1.7;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(220, 38, 38, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(220, 38, 38, 0.1) 0%, transparent 20%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header - matching GYMBROS style */
+        .header {
+            background: var(--primary);
+            color: var(--text);
+            padding: 40px 20px;
+            border-radius: var(--radius);
+            margin-bottom: 40px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid var(--secondary);
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><path d="M0,50 Q25,40 50,50 T100,50" stroke="%23dc2626" stroke-width="2" fill="none" opacity="0.1"/><path d="M0,30 Q25,20 50,30 T100,30" stroke="%23dc2626" stroke-width="2" fill="none" opacity="0.1"/><path d="M0,70 Q25,60 50,70 T100,70" stroke="%23dc2626" stroke-width="2" fill="none" opacity="0.1"/></svg>');
+            opacity: 0.1;
+        }
+        
+        .header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            font-weight: 800;
+            position: relative;
+            color: var(--text);
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--text-secondary);
+            position: relative;
+        }
+        
+        .header-subtitle {
+            display: inline-block;
+            background: var(--gradient);
+            padding: 8px 20px;
+            border-radius: 50px;
+            margin-top: 20px;
+            font-weight: 600;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(220, 38, 38, 0.3);
+            position: relative;
+            color: white;
+        }
+        
+        /* Main layout */
+        .main-container {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .chat-section {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .info-section {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        /* Chat container */
+        .chat-container {
+            background: var(--light);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--gray);
+        }
+        
+        .chat-header {
+            background: var(--secondary);
+            color: white;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .chat-header h3 {
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .ai-indicator {
+            background: var(--dark);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid var(--accent);
+        }
+        
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            background-color: #1a1a1a;
+        }
+        
+        .message {
+            max-width: 85%;
+            padding: 15px 20px;
+            border-radius: var(--radius);
+            line-height: 1.6;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .user-message {
+            background: var(--gradient);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 5px;
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+        }
+        
+        .ai-message {
+            background: #222222;
+            color: var(--text);
+            align-self: flex-start;
+            border-bottom-left-radius: 5px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .message-info {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-top: 8px;
+            display: block;
+            color: var(--text-secondary);
+        }
+        
+        /* Input area */
+        .input-container {
+            display: flex;
+            padding: 20px;
+            border-top: 1px solid #333;
+            background: var(--light);
+            gap: 10px;
+        }
+        
+        input[type="text"] {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid #444;
+            border-radius: var(--radius);
+            font-size: 1rem;
+            transition: all 0.3s;
+            background: #222;
+            color: var(--text);
+        }
+        
+        input[type="text"]:focus {
+            outline: none;
+            border-color: var(--secondary);
+            background: #1a1a1a;
+            box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+        }
+        
+        .send-btn {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            border-radius: var(--radius);
+            padding: 0 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .send-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(220, 38, 38, 0.4);
+        }
+        
+        /* Quick replies */
+        .quick-replies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .quick-btn {
+            background: #222;
+            color: var(--text);
+            border: 1px solid #444;
+            border-radius: 50px;
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .quick-btn:hover {
+            background: var(--secondary);
+            color: white;
+            border-color: var(--secondary);
+        }
+        
+        /* Info cards section */
+        .info-card {
+            background: #1a1a1a;
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            margin-bottom: 25px;
+            border-top: 5px solid var(--secondary);
+            border: 1px solid #333;
+        }
+        
+        .info-card h3 {
+            color: var(--text);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .info-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 15px;
+            background: #222;
+            border-radius: var(--radius);
+            border: 1px solid #333;
+        }
+        
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        
+        /* Diet plan display */
+        .diet-plan {
+            background: linear-gradient(135deg, #1a1a1a 0%, #222 100%);
+            border-radius: var(--radius);
+            padding: 25px;
+            margin-top: 20px;
+            border-left: 5px solid var(--secondary);
+            animation: slideIn 0.5s ease;
+            border: 1px solid #333;
+        }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .diet-plan h4 {
+            color: var(--text);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .meal-item {
+            background: #222;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            border-left: 4px solid var(--success);
+        }
+        
+        .meal-time {
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        /* Progress bar */
+        .progress-container {
+            margin: 20px 0;
+        }
+        
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background: #333;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: var(--gradient);
+            border-radius: 5px;
+            width: 0%;
+            transition: width 1s ease;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-secondary);
+            border-top: 1px solid #333;
+            margin-top: 40px;
+            font-size: 0.9rem;
+        }
+        
+        .gymbro-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--gradient);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            margin-top: 15px;
+            font-weight: 600;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+            }
+            
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .chat-container {
+                height: 450px;
+            }
+            
+            .stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .message {
+                max-width: 95%;
+            }
+        }
+        
+        /* Loading animation */
+        .loading {
+            display: flex;
+            gap: 8px;
+            padding: 15px;
+        }
+        
+        .loading-dot {
+            width: 10px;
+            height: 10px;
+            background: var(--secondary);
+            border-radius: 50%;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+        
+        .loading-dot:nth-child(1) { animation-delay: -0.32s; }
+        .loading-dot:nth-child(2) { animation-delay: -0.16s; }
+        
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+        
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #222;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent);
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1><span style="color: #dc2626;">GYMBROS</span> | مساعد التخطيط الغذائي</h1>
+            <p>احصل على نظام غذائي مخصص بناءً على أهدافك البدنية ومقاسات جسمك. تم تصميم هذا النظام ليتناسب مع برامج GYMBROS التدريبية</p>
+            <div class="header-subtitle">
+                <i class="fas fa-robot"></i> مدعوم بالذكاء الاصطناعي
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-container">
+            <!-- Chat Section -->
+            <div class="chat-section">
+                <div class="chat-container">
+                    <div class="chat-header">
+                        <h3><i class="fas fa-comments"></i> محادثة مع المساعد الغذائي <span class="ai-indicator">AI</span></h3>
+                        <div class="progress-header">
+                            <span style="color: white;">اكتمال المعلومات: <strong id="progressPercent">14%</strong></span>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill" style="width: 14%;"></div>
+                    </div>
+                    
+                    <div class="chat-messages" id="chatMessages">
+                        <!-- Messages will be inserted here -->
+                        <div class="message ai-message">
+                            <strong style="color: #dc2626;">مرحباً بك في مساعد GYMBROS الغذائي!</strong><br>
+                            سأساعدك في تصميم نظام غذائي مخصص 100% ليناسب أهدافك التدريبية.<br><br>
+                            <span class="message-info"><i class="far fa-clock"></i> المحادثة ستحتوي على 7 أسئلة فقط</span>
+                        </div>
+                        
+                        <div class="message ai-message">
+                            ما هو هدفك الأساسي من النظام الغذائي؟
+                            <div class="quick-replies">
+                                <button class="quick-btn" onclick="selectGoal('بناء العضلات')">بناء العضلات</button>
+                                <button class="quick-btn" onclick="selectGoal('فقدان الوزن')">فقدان الوزن</button>
+                                <button class="quick-btn" onclick="selectGoal('زيادة الوزن')">زيادة الوزن</button>
+                                <button class="quick-btn" onclick="selectGoal('الحفاظ على الوزن')">الحفاظ على الوزن</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="input-container">
+                        <input type="text" id="userInput" placeholder="اكتب رسالتك هنا أو اختر من الأزرار أعلاه..." autocomplete="off">
+                        <button class="send-btn" id="sendBtn" onclick="sendMessage()">
+                            <i class="fas fa-paper-plane"></i> إرسال
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Information Section -->
+            <div class="info-section">
+                <div class="info-card">
+                    <h3><div class="info-icon"><i class="fas fa-user"></i></div> معلومات المستخدم</h3>
+                    <div id="userInfoDisplay">
+                        <p style="color: var(--text-secondary);">سيتم عرض معلوماتك الشخصية هنا بعد إكمال الأسئلة.</p>
+                        <div class="stats">
+                            <div class="stat-item">
+                                <div class="stat-value">--</div>
+                                <div class="stat-label">الهدف</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">--</div>
+                                <div class="stat-label">السعرات اليومية</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <h3><div class="info-icon"><i class="fas fa-utensils"></i></div> خطة الوجبات</h3>
+                    <div id="mealPlanDisplay">
+                        <p style="color: var(--text-secondary);">ستظهر خطتك الغذائية المخصصة هنا بعد إكمال المحادثة.</p>
+                        <div class="meal-item">
+                            <div class="meal-time"><i class="fas fa-sun"></i> الفطور</div>
+                            <div>سيتم تحديد الوجبة بناءً على هدفك</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <h3><div class="info-icon"><i class="fas fa-dumbbell"></i></div> نصائح GYMBROS</h3>
+                    <ul style="padding-right: 20px; color: var(--text-secondary);">
+                        <li style="margin-bottom: 10px;"><i class="fas fa-fire" style="color: #dc2626;"></i> تناول وجبة بروتين قبل وبعد التمرين</li>
+                        <li style="margin-bottom: 10px;"><i class="fas fa-tint" style="color: #3b82f6;"></i> اشرب 3-4 لتر ماء يومياً</li>
+                        <li style="margin-bottom: 10px;"><i class="fas fa-moon" style="color: #8b5cf6;"></i> نم 7-8 ساعات ليلاً للتعافي الأمثل</li>
+                        <li><i class="fas fa-sync-alt" style="color: #10b981;"></i> استمرارية التدريب أهم من شدته</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p>نظام التخطيط الغذائي الذكي | جزء من منصة GYMBROS لللياقة البدنية</p>
+            <div class="gymbro-badge">
+                <i class="fas fa-dumbbell"></i>
+                <span>GYMBROS FITNESS</span>
+            </div>
+            <p style="margin-top: 15px; font-size: 0.8rem; color: #666;">
+                <i class="fas fa-code"></i> تم التطوير باستخدام الذكاء الاصطناعي المتقدم
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // البيانات والنظام (نفس النظام السابق)
+        const dietData = {
+            goals: {
+                "بناء العضلات": {
+                    description: "نظام متخصص لبناء الكتلة العضلية",
+                    calories: "فائض 300-500 سعرة حرارية",
+                    protein: "2.2 جرام/كجم من وزن الجسم",
+                    color: "#dc2626"
+                },
+                "فقدان الوزن": {
+                    description: "نظام حرق الدهون مع الحفاظ على العضلات",
+                    calories: "نقص 500 سعرة حرارية",
+                    protein: "2.0 جرام/كجم من وزن الجسم",
+                    color: "#10b981"
+                },
+                "زيادة الوزن": {
+                    description: "نظام زيادة الوزن الصحي",
+                    calories: "فائض 500-700 سعرة حرارية",
+                    protein: "1.8 جرام/كجم من وزن الجسم",
+                    color: "#f59e0b"
+                },
+                "الحفاظ على الوزن": {
+                    description: "نظام التوازن الغذائي",
+                    calories: "المعادل الحرارى اليومي",
+                    protein: "1.6 جرام/كجم من وزن الجسم",
+                    color: "#8b5cf6"
+                }
+            },
+            
+            mealPlans: {
+                "بناء العضلات": {
+                    breakfast: "4 بيضات + شوفان + موز + زبدة فول سوداني",
+                    lunch: "صدر دجاج + أرز بني + بروكلي + أفوكادو",
+                    snack: "بروتين شيك + موز + لوز",
+                    dinner: "لحم بقري + بطاطا حلوة + خضروات مشكلة",
+                    postWorkout: "واي بروتين + كرياتين"
+                },
+                "فقدان الوزن": {
+                    breakfast: "3 بيضات + خضروات + شريحة خبز قمح",
+                    lunch: "سمك مشوي + سلطة كبيرة + 1/2 كوب كينوا",
+                    snack: "زبادي يوناني + توت + بذور شيا",
+                    dinner: "صدر دجاج + خضروات مطبوخة على البخار",
+                    postWorkout: "BCAA + مشروب خالي من السكر"
+                },
+                "زيادة الوزن": {
+                    breakfast: "5 بيضات + شوفان مع حليب كامل + موز + عسل",
+                    lunch: "لحم أحمر + معكرونة قمح كامل + خضروات + زيت زيتون",
+                    snack: "سموذي بروتين + زبدة فول سوداني + موز",
+                    dinner: "سلمون مشوي + أرز + خضروات + مكسرات",
+                    postWorkout: "مكسب كتلة + بروتين"
+                },
+                "الحفاظ على الوزن": {
+                    breakfast: "شوفان مع حليب + فواكه + مكسرات",
+                    lunch: "دجاج أو سمك + خضروات + كربوهيدرات معقدة",
+                    snack: "فاكهة + حفنة مكسرات",
+                    dinner: "بروتين خفيف + سلطة كبيرة + دهون صحية",
+                    postWorkout: "بروتين حسب الحاجة"
+                }
+            }
+        };
+        
+        // حالة المحادثة
+        const conversationState = {
+            step: 1,
+            userData: {},
+            progress: 14
+        };
+        
+        // عناصر DOM
+        const chatMessages = document.getElementById('chatMessages');
+        const userInput = document.getElementById('userInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const progressFill = document.getElementById('progressFill');
+        const progressPercent = document.getElementById('progressPercent');
+        const userInfoDisplay = document.getElementById('userInfoDisplay');
+        const mealPlanDisplay = document.getElementById('mealPlanDisplay');
+        
+        // إرسال عند الضغط على Enter
+        userInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+        
+        // دالة إرسال الرسالة
+        function sendMessage() {
+            const message = userInput.value.trim();
+            if (message === '') return;
+            
+            addMessage(message, 'user');
+            userInput.value = '';
+            
+            setTimeout(() => {
+                processUserMessage(message);
+            }, 800);
+        }
+        
+        // تحديد الهدف من الأزرار السريعة
+        function selectGoal(goal) {
+            userInput.value = goal;
+            sendMessage();
+        }
+        
+        // إضافة رسالة
+        function addMessage(text, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message');
+            messageDiv.classList.add(sender === 'user' ? 'user-message' : 'ai-message');
+            
+            messageDiv.innerHTML = text;
+            
+            // إضافة مؤقت للرسائل الذكية
+            if (sender === 'ai') {
+                const time = new Date().toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' });
+                messageDiv.innerHTML += `<span class="message-info"><i class="far fa-clock"></i> ${time}</span>`;
+            }
+            
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+        
+        // تحديث شريط التقدم
+        function updateProgress(step) {
+            const progress = 14 + (step * 12);
+            conversationState.progress = progress;
+            
+            progressFill.style.width = `${progress}%`;
+            progressPercent.textContent = `${progress}%`;
+        }
+        
+        // معالجة رسالة المستخدم
+        function processUserMessage(message) {
+            // عرض تحميل
+            const loadingDiv = document.createElement('div');
+            loadingDiv.classList.add('message', 'ai-message', 'loading');
+            loadingDiv.innerHTML = `
+                <div class="loading-dot"></div>
+                <div class="loading-dot"></div>
+                <div class="loading-dot"></div>
+            `;
+            chatMessages.appendChild(loadingDiv);
+            
+            setTimeout(() => {
+                chatMessages.removeChild(loadingDiv);
+                
+                let response = '';
+                let quickReplies = [];
+                
+                switch (conversationState.step) {
+                    case 1:
+                        response = handleGoalSelection(message);
+                        updateProgress(1);
+                        conversationState.step = 2;
+                        break;
+                    case 2:
+                        response = handleGenderSelection(message);
+                        updateProgress(2);
+                        conversationState.step = 3;
+                        break;
+                    case 3:
+                        response = handleAgeSelection(message);
+                        updateProgress(3);
+                        conversationState.step = 4;
+                        break;
+                    case 4:
+                        response = handleWeightSelection(message);
+                        updateProgress(4);
+                        conversationState.step = 5;
+                        break;
+                    case 5:
+                        response = handleHeightSelection(message);
+                        updateProgress(5);
+                        conversationState.step = 6;
+                        break;
+                    case 6:
+                        response = handleActivitySelection(message);
+                        updateProgress(6);
+                        conversationState.step = 7;
+                        break;
+                    case 7:
+                        response = generateDietPlan();
+                        updateProgress(7);
+                        break;
+                    default:
+                        response = "تم الانتهاء! يمكنك إعادة المحادثة بتحديث الصفحة.";
+                }
+                
+                addMessage(response, 'ai');
+                
+                // تحديث معلومات المستخدم
+                updateUserInfoDisplay();
+                
+            }, 1200);
+        }
+        
+        // معالجة اختيار الهدف
+        function handleGoalSelection(message) {
+            const goal = message.trim();
+            const validGoals = Object.keys(dietData.goals);
+            
+            if (validGoals.includes(goal)) {
+                conversationState.userData.goal = goal;
+                
+                let response = `ممتاز! <strong style="color: #dc2626;">${goal}</strong> هو هدف رائع.<br>`;
+                response += `<small style="color: #d1d5db;">${dietData.goals[goal].description}</small><br><br>`;
+                response += `ما هو جنسك؟`;
+                
+                quickReplies = ["ذكر", "أنثى"];
+                
+                // إضافة أزرار سريعة
+                setTimeout(() => {
+                    const quickReplyDiv = document.createElement('div');
+                    quickReplyDiv.classList.add('quick-replies');
+                    quickReplyDiv.innerHTML = `
+                        <button class="quick-btn" onclick="userInput.value='ذكر'; sendMessage();">ذكر</button>
+                        <button class="quick-btn" onclick="userInput.value='أنثى'; sendMessage();">أنثى</button>
+                    `;
+                    
+                    const lastMessage = chatMessages.lastChild;
+                    if (lastMessage.classList.contains('ai-message')) {
+                        lastMessage.appendChild(quickReplyDiv);
+                    }
+                }, 100);
+                
+                return response;
+            } else {
+                return `الرجاء اختيار هدف من القائمة:<br><br>
+                <div class="quick-replies">
+                    <button class="quick-btn" onclick="selectGoal('بناء العضلات')">بناء العضلات</button>
+                    <button class="quick-btn" onclick="selectGoal('فقدان الوزن')">فقدان الوزن</button>
+                    <button class="quick-btn" onclick="selectGoal('زيادة الوزن')">زيادة الوزن</button>
+                    <button class="quick-btn" onclick="selectGoal('الحفاظ على الوزن')">الحفاظ على الوزن</button>
+                </div>`;
+            }
+        }
+        
+        // باقي دوال المعالجة
+        function handleGenderSelection(message) {
+            const gender = message.trim();
+            conversationState.userData.gender = gender;
+            return `جنسك: <strong style="color: #dc2626;">${gender}</strong><br><br>كم عمرك؟`;
+        }
+        
+        function handleAgeSelection(message) {
+            const age = parseInt(message);
+            if (isNaN(age) || age < 15 || age > 80) {
+                return "الرجاء إدخال عمر صحيح بين 15 و 80 سنة";
+            }
+            conversationState.userData.age = age;
+            return `عمرك: <strong style="color: #dc2626;">${age} سنة</strong><br><br>ما هو وزنك الحالي (كجم)؟`;
+        }
+        
+        function handleWeightSelection(message) {
+            const weight = parseFloat(message);
+            if (isNaN(weight) || weight < 40 || weight > 200) {
+                return "الرجاء إدخال وزن صحيح بين 40 و 200 كجم";
+            }
+            conversationState.userData.weight = weight;
+            return `وزنك: <strong style="color: #dc2626;">${weight} كجم</strong><br><br>ما هو طولك (سم)؟`;
+        }
+        
+        function handleHeightSelection(message) {
+            const height = parseFloat(message);
+            if (isNaN(height) || height < 140 || height > 220) {
+                return "الرجاء إدخال طول صحيح بين 140 و 220 سم";
+            }
+            conversationState.userData.height = height;
+            
+            let response = `طولك: <strong style="color: #dc2626;">${height} سم</strong><br><br>`;
+            response += "ما هو مستوى نشاطك اليومي؟<br><br>";
+            response += `<div class="quick-replies">
+                <button class="quick-btn" onclick="userInput.value='قليل النشاط'; sendMessage();">قليل النشاط</button>
+                <button class="quick-btn" onclick="userInput.value='نشاط معتدل'; sendMessage();">نشاط معتدل</button>
+                <button class="quick-btn" onclick="userInput.value='نشاط عالي'; sendMessage();">نشاط عالي</button>
+            </div>`;
+            
+            return response;
+        }
+        
+        function handleActivitySelection(message) {
+            conversationState.userData.activity = message;
+            
+            // حساب السعرات
+            let bmr;
+            if (conversationState.userData.gender === "ذكر") {
+                bmr = 10 * conversationState.userData.weight + 6.25 * conversationState.userData.height - 5 * conversationState.userData.age + 5;
+            } else {
+                bmr = 10 * conversationState.userData.weight + 6.25 * conversationState.userData.height - 5 * conversationState.userData.age - 161;
+            }
+            
+            let multiplier = 1.55; // افتراض نشاط معتدل
+            if (message.includes("قليل")) multiplier = 1.2;
+            if (message.includes("عالي")) multiplier = 1.725;
+            
+            let dailyCalories = Math.round(bmr * multiplier);
+            
+            // تعديل حسب الهدف
+            const goal = conversationState.userData.goal;
+            if (goal === "فقدان الوزن") dailyCalories -= 500;
+            if (goal === "بناء العضلات" || goal === "زيادة الوزن") dailyCalories += 500;
+            
+            conversationState.userData.calories = dailyCalories;
+            
+            return `مستوى نشاطك: <strong style="color: #dc2626;">${message}</strong><br><br>
+            <div class="diet-plan">
+                <h4><i class="fas fa-calculator"></i> احتياجاتك اليومية:</h4>
+                <p>السعرات الحرارية: <strong style="color: #dc2626;">${dailyCalories} سعرة</strong></p>
+                <p>البروتين: <strong style="color: #dc2626;">${dietData.goals[goal].protein}</strong></p>
+            </div>
+            <br>اضغط أي مفتاح لرؤية نظامك الغذائي الكامل...`;
+        }
+        
+        // توليد النظام الغذائي
+        function generateDietPlan() {
+            const user = conversationState.userData;
+            const goal = user.goal;
+            const plan = dietData.mealPlans[goal];
+            
+            let response = `<div class="diet-plan">
+                <h4><i class="fas fa-crown" style="color: #dc2626;"></i> نظامك الغذائي المخصص لهدف "${goal}"</h4>
+                <p style="color: #d1d5db;">تم تصميم هذا النظام ليتناسب مع برامج GYMBROS التدريبية</p>
+                
+                <div class="meal-item">
+                    <div class="meal-time"><i class="fas fa-sun"></i> الفطور (7-8 ص)</div>
+                    <div>${plan.breakfast}</div>
+                </div>
+                
+                <div class="meal-item">
+                    <div class="meal-time"><i class="fas fa-apple-alt"></i> الغداء (1-2 م)</div>
+                    <div>${plan.lunch}</div>
+                </div>
+                
+                <div class="meal-item">
+                    <div class="meal-time"><i class="fas fa-seedling"></i> وجبة خفيفة (4-5 م)</div>
+                    <div>${plan.snack}</div>
+                </div>
+                
+                <div class="meal-item">
+                    <div class="meal-time"><i class="fas fa-moon"></i> العشاء (8-9 م)</div>
+                    <div>${plan.dinner}</div>
+                </div>
+                
+                <div class="meal-item">
+                    <div class="meal-time"><i class="fas fa-dumbbell"></i> بعد التمرين</div>
+                    <div>${plan.postWorkout}</div>
+                </div>
+            </div>
+            <br><strong style="color: #dc2626;">مبروك! تم تصميم نظامك الغذائي بنجاح.</strong><br>
+            يمكنك حفظ هذه المعلومات أو طباعتها.`;
+            
+            // تحديث عرض خطة الوجبات في القسم الجانبي
+            updateMealPlanDisplay(plan);
+            
+            return response;
+        }
+        
+        // تحديث معلومات المستخدم في القسم الجانبي
+        function updateUserInfoDisplay() {
+            const user = conversationState.userData;
+            
+            if (user.goal) {
+                const goalData = dietData.goals[user.goal];
+                
+                userInfoDisplay.innerHTML = `
+                    <p><strong>الهدف:</strong> <span style="color: #dc2626;">${user.goal}</span></p>
+                    <p><strong>الجنس:</strong> ${user.gender || '--'}</p>
+                    <p><strong>العمر:</strong> ${user.age || '--'} سنة</p>
+                    <p><strong>الوزن:</strong> ${user.weight || '--'} كجم</p>
+                    <p><strong>الطول:</strong> ${user.height || '--'} سم</p>
+                    
+                    <div class="stats">
+                        <div class="stat-item" style="border-top: 3px solid ${goalData.color}">
+                            <div class="stat-value">${user.goal}</div>
+                            <div class="stat-label">الهدف الغذائي</div>
+                        </div>
+                        <div class="stat-item" style="border-top: 3px solid #dc2626">
+                            <div class="stat-value">${user.calories || '--'}</div>
+                            <div class="stat-label">سعرة/يوم</div>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+        
+        // تحديث عرض خطة الوجبات في القسم الجانبي
+        function updateMealPlanDisplay(plan) {
+            if (!plan) return;
+            
+            mealPlanDisplay.innerHTML = `
+                <div class="meal-item">
+                    <div class="meal-time"><i class="fas fa-sun"></i> الفطور</div>
+                    <div>${plan.breakfast}</div>
+                </div>
+                <div class="meal-item">
+                    <div class="meal-time"><i class="fas fa-apple-alt"></i> الغداء</div>
+                    <div>${plan.lunch}</div>
+                </div>
+                <div class="meal-item">
+                    <div class="meal-time"><i class="fas fa-seedling"></i> وجبة خفيفة</div>
+                    <div>${plan.snack}</div>
+                </div>
+                <div class="meal-item">
+                    <div class="meal-time"><i class="fas fa-moon"></i> العشاء</div>
+                    <div>${plan.dinner}</div>
+                </div>
+            `;
+        }
+        
+        // تهيئة أولية
+        updateUserInfoDisplay();
+    </script>
+    <a href="index.html" class="meal-btn">Home</a>
+     <style> 
+      
+.meal-btn {
+    color: white;
+    background-color: red;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: 600;
+    display: inline-block;
+    padding: 0.9375em 2.1875em;
+    letter-spacing: 1px;
+    border-radius: 15px;
+    transition: 0.5s ease;
+    margin-right: 690px;
+    margin-top: 80px;
+}
+</style> 
+</body>
+</html>

@@ -1,0 +1,142 @@
+═══════════════════════════════════════════════════════════════
+                    FILE LOCATIONS GUIDE
+═══════════════════════════════════════════════════════════════
+
+📍 WHERE TO FIND EVERYTHING IN THE CODE:
+────────────────────────────────────────
+
+═══════════════════════════════════════════════════════════════
+FILE: index.html (Main HTML File)
+═══════════════════════════════════════════════════════════════
+
+Line ~8:    Website Title
+Line ~31:   Logo Text "GYMBROS"
+Line ~37:   Navigation Menu Items
+Line ~45:   "Join Now" Button
+
+Line ~52:   HERO SECTION STARTS
+Line ~58:   Hero Background Image URL ← CHANGE YOUR HERO IMAGE
+Line ~70:   "TRANSFORM YOUR BODY" Badge
+Line ~72:   Main Headline "BUILD YOUR DREAM PHYSIQUE"
+Line ~76:   Hero Description Text
+Line ~82:   "Start Your Journey" Button
+Line ~90:   "Watch Demo" Button
+Line ~96:   Stats (10K+ Members, 500+ Plans, 50+ Trainers)
+
+Line ~111:  PROGRAMS SECTION STARTS
+Line ~118:  Section Title "Choose Your Path"
+Line ~122:  Programs Grid Starts
+Line ~123:  Program #1: Muscle Building
+Line ~144:  Program #2: Fat Loss
+Line ~165:  Program #3: Daily Fitness
+Line ~186:  Program #4: Athletic Performance
+
+Line ~209:  COURSES SECTION STARTS
+Line ~216:  Section Title "Expert-Led Courses"
+Line ~220:  Courses Grid Starts
+Line ~221:  Course #1: Complete Beginner Guide (FREE)
+Line ~239:  Course #2: Advanced Hypertrophy ($49)
+Line ~257:  Course #3: Nutrition Mastery ($39)
+
+Line ~278:  NUTRITION SECTION STARTS
+Line ~285:  Section Title "Fuel Your Performance"
+Line ~289:  Nutrition Tips Grid
+Line ~290:  Tip #1: Protein First
+Line ~296:  Tip #2: Whole Foods
+Line ~302:  Tip #3: Lean Meats
+Line ~308:  Tip #4: Omega-3 Fats
+Line ~314:  Tip #5: Vegetables Daily
+Line ~320:  Tip #6: Hydration
+Line ~326:  CTA Box "Want a Personalized Meal Plan?"
+
+Line ~336:  PRODUCTS SECTION STARTS
+Line ~343:  Section Title "Top Quality Supplements"
+Line ~347:  Products Grid Starts
+Line ~348:  Product #1: Whey Protein - $49.99
+Line ~362:  Product #2: Mass Gainer - $54.99 (21% OFF)
+Line ~378:  Product #3: Creatine - $29.99 (25% OFF)
+Line ~394:  Product #4: BCAA Recovery - $34.99
+Line ~409:  Product #5: Pre-Workout - $44.99 (18% OFF)
+Line ~425:  Product #6: Protein Bars - $24.99 (24% OFF)
+
+Line ~445:  FOOTER SECTION STARTS
+Line ~450:  Footer Logo and Description
+Line ~461:  Social Media Links ← ADD YOUR SOCIAL LINKS
+Line ~469:  Quick Links
+Line ~477:  Support Links
+Line ~485:  Newsletter Form
+Line ~500:  Copyright Text
+
+═══════════════════════════════════════════════════════════════
+FILE: styles.css (CSS Styling File)
+═══════════════════════════════════════════════════════════════
+
+Line ~16:   COLOR VARIABLES START ← MAIN COLORS TO EDIT
+Line ~17:   --color-background (Dark background)
+Line ~18:   --color-foreground (White text)
+Line ~19:   --color-primary (Orange #FF5500)
+Line ~20:   --color-secondary (Red #E84855)
+Line ~21:   --color-accent (Bright Orange)
+Line ~22:   --color-muted (Dark gray)
+Line ~28:   Gradient definitions
+Line ~34:   Shadow effects
+Line ~38:   Transition speeds
+
+Line ~45:   Body styling
+Line ~53:   Heading fonts (Bebas Neue)
+
+Line ~62:   NAVBAR STYLES (Lines 62-125)
+Line ~126:  HERO SECTION STYLES (Lines 126-245)
+Line ~247:  SECTION STYLES (Lines 247-274)
+Line ~276:  PROGRAMS GRID STYLES (Lines 276-364)
+Line ~366:  COURSES GRID STYLES (Lines 366-426)
+Line ~428:  NUTRITION GRID STYLES (Lines 428-486)
+Line ~488:  PRODUCTS GRID STYLES (Lines 488-596)
+Line ~598:  FOOTER STYLES (Lines 598-708)
+Line ~710:  RESPONSIVE DESIGN (Lines 710-745)
+
+═══════════════════════════════════════════════════════════════
+FILE: script.js (JavaScript Functionality)
+═══════════════════════════════════════════════════════════════
+
+Line ~1:    Smooth Scrolling Navigation
+Line ~13:   enrollProgram() Function - Program enrollment
+Line ~28:   enrollCourse() Function - Course enrollment
+Line ~43:   Shopping Cart Variables
+Line ~45:   addToCart() Function - Add products to cart
+Line ~69:   updateCartDisplay() Function - Show cart count
+Line ~103:  showCart() Function - Display cart contents
+Line ~112:  Load cart from localStorage
+Line ~121:  Navbar scroll effect
+Line ~137:  Scroll animations
+Line ~161:  Newsletter subscription
+
+═══════════════════════════════════════════════════════════════
+
+🎯 QUICK EDIT REFERENCE:
+────────────────────────
+
+TO CHANGE:                  EDIT FILE:      LINE NUMBER:
+─────────────────────────────────────────────────────────────
+Website Name                index.html      31, 41, 500
+Main Colors                 styles.css      16-26
+Hero Image                  index.html      58
+Hero Title                  index.html      72-75
+Product Prices              index.html      Search "$"
+Product Images              index.html      Search "src="
+Social Media Links          index.html      461-467
+Footer Text                 index.html      500
+
+═══════════════════════════════════════════════════════════════
+
+💡 SEARCH TIPS:
+───────────────
+Use Ctrl+F (Find) to quickly locate:
+• "GYMBROS" - Find all instances of gym name
+• "src=" - Find all images
+• "$" - Find all prices
+• "class=\"product-card\"" - Find all products
+• "class=\"program-card\"" - Find all programs
+• "onclick=" - Find all button actions
+
+═══════════════════════════════════════════════════════════════

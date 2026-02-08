@@ -1,0 +1,110 @@
+═══════════════════════════════════════════════════════════════
+         GYMBROS WEBSITE - COMPLETE HTML/CSS/JAVASCRIPT
+═══════════════════════════════════════════════════════════════
+
+📁 FILES INCLUDED:
+─────────────────
+1. index.html       - Main HTML file (website structure)
+2. styles.css       - All CSS styling (colors, layout, animations)
+3. script.js        - JavaScript functionality (cart, enrollment, etc.)
+4. README.md        - Detailed documentation
+5. INSTRUCTIONS.txt - This file
+
+🚀 HOW TO USE:
+──────────────
+METHOD 1 - Simple (Just open in browser):
+   • Double-click "index.html"
+   • The website will open in your default browser
+   • Everything works immediately!
+
+METHOD 2 - Using a local server:
+   • Open terminal/command prompt in this folder
+   • Run: python -m http.server 8000
+   • Visit: http://localhost:8000
+
+✏️ HOW TO EDIT:
+───────────────
+CHANGE COLORS:
+   • Open "styles.css"
+   • Find ":root {" section (line ~16)
+   • Edit these values:
+     --color-primary: hsl(16, 100%, 50%);    (Orange)
+     --color-secondary: hsl(0, 84%, 60%);    (Red)
+     --color-accent: hsl(25, 95%, 53%);      (Bright Orange)
+
+CHANGE TEXT/CONTENT:
+   • Open "index.html"
+   • Find the section you want to edit
+   • Sections are clearly labeled with comments:
+     <!-- Navigation -->
+     <!-- Hero Section -->
+     <!-- Programs Section -->
+     <!-- Courses Section -->
+     <!-- Nutrition Section -->
+     <!-- Products Section -->
+     <!-- Footer -->
+
+CHANGE IMAGES:
+   • Open "index.html"
+   • Find image URLs (look for src="https://...")
+   • Replace with your own image URLs
+
+ADD/REMOVE PRODUCTS:
+   • Open "index.html"
+   • Find "<!-- Products Section -->"
+   • Copy a <div class="product-card">...</div> block
+   • Paste and modify for new product
+   • Update: image, name, description, price
+
+CHANGE FONTS:
+   • Open "styles.css"
+   • Find font-family declarations
+   • Current fonts: 'Bebas Neue' (headings), 'Inter' (body)
+   • Replace with your preferred Google Fonts
+
+💡 TIPS:
+────────
+• All data (cart, enrollments) saves in browser localStorage
+• Website is fully responsive (works on mobile)
+• No internet required after images are loaded
+• No installation or build tools needed
+• Works on all modern browsers
+
+🎨 CUSTOMIZATION IDEAS:
+───────────────────────
+1. Change color scheme in styles.css
+2. Add your gym logo to navigation
+3. Replace product images with your supplements
+4. Update prices and descriptions
+5. Add your gym's contact information
+6. Customize program details for your gym
+7. Add more courses or products
+
+📱 TESTING:
+──────────
+• Test on Chrome, Firefox, Safari
+• Test on mobile devices (responsive design)
+• Try all buttons (enrollment, add to cart)
+• Check smooth scrolling navigation
+
+🐛 TROUBLESHOOTING:
+──────────────────
+Problem: Images not showing
+Solution: Check image URLs are correct and accessible
+
+Problem: Buttons not working
+Solution: Make sure script.js is in same folder as index.html
+
+Problem: Styling looks broken
+Solution: Make sure styles.css is in same folder as index.html
+
+📞 NEED HELP?
+─────────────
+• Check README.md for detailed documentation
+• All code is commented for easy understanding
+• Search for specific sections using HTML comments
+
+═══════════════════════════════════════════════════════════════
+                    Built for GYMBROS 💪
+              Ready to customize and launch!
+═══════════════════════════════════════════════════════════════

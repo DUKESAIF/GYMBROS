@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Athletic Performance | GYMBROS</title>
+    <style>
+        :root {
+            --primary: #000000;
+            --secondary: #dc2626;
+            --accent: #ef4444;
+            --light: #111111;
+            --dark: #000000;
+            --text: #ffffff;
+            --text-secondary: #d1d5db;
+            --gray: #374151;
+            --gradient: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+            --shadow: 0 10px 25px rgba(220, 38, 38, 0.2);
+            --radius: 12px;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', 'Segoe UI', sans-serif;
+        }
+        
+        body {
+            background-color: var(--primary);
+            color: var(--text);
+            line-height: 1.7;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(220, 38, 38, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(220, 38, 38, 0.1) 0%, transparent 20%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header */
+        .page-header {
+            background: var(--primary);
+            color: var(--text);
+            padding: 60px 20px;
+            border-radius: var(--radius);
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid var(--secondary);
+        }
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('images/hero.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.25;
+            z-index: 0;
+        }
+        
+        .page-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+            position: relative;
+            color: var(--text);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+        
+        .page-header h1 span {
+            color: var(--secondary);
+        }
+        
+        .page-header .subtitle {
+            font-size: 1.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header-badge {
+            display: inline-block;
+            background: var(--gradient);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-top: 20px;
+            position: relative;
+            z-index: 1;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .header-badge:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(220, 38, 38, 0.3);
+        }
+        
+        /* Main Content */
+        .hero-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .hero-content {
+            padding: 40px;
+            background: #1a1a1a;
+            border-radius: var(--radius);
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+        }
+        
+        .hero-content:hover {
+            border-color: var(--secondary);
+            box-shadow: var(--shadow);
+        }
+        
+        /* Content Box بدلاً من الصورة */
+        .content-box {
+            padding: 40px;
+            background: #1a1a1a;
+            border-radius: var(--radius);
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+        }
+        
+        .content-box:hover {
+            border-color: var(--secondary);
+            box-shadow: var(--shadow);
+            transform: translateY(-5px);
+        }
+        
+        .content-box-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--secondary);
+        }
+        
+        .content-box-header h2 {
+            color: var(--secondary);
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .content-box-header .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+        
+        .content-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: rgba(220, 38, 38, 0.05);
+            border-radius: 10px;
+            border-right: 3px solid var(--secondary);
+            transition: all 0.3s ease;
+        }
+        
+        .content-item:hover {
+            background: rgba(220, 38, 38, 0.1);
+            transform: translateX(-5px);
+        }
+        
+        .content-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-left: 15px;
+            flex-shrink: 0;
+        }
+        
+        .content-text h3 {
+            color: var(--text);
+            margin-bottom: 8px;
+            font-size: 1.3rem;
+        }
+        
+        .content-text p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        /* Stats Section */
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 25px;
+            background: #1a1a1a;
+            border-radius: var(--radius);
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+        }
+        
+        .stat-item:hover {
+            border-color: var(--secondary);
+            transform: translateY(-5px);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+        
+        /* Features */
+        .features-section {
+            margin-bottom: 60px;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--text);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: #1a1a1a;
+            border-radius: var(--radius);
+            padding: 30px;
+            text-align: center;
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--secondary);
+            box-shadow: var(--shadow);
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 60%, rgba(220, 38, 38, 0.05) 100%);
+            z-index: 0;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 2rem;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1);
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Courses */
+        .courses-section {
+            margin-bottom: 60px;
+        }
+        
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .course-card {
+            background: #1a1a1a;
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--secondary);
+            box-shadow: var(--shadow);
+        }
+        
+        .course-header {
+            background: var(--gradient);
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .course-header h3 {
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        .course-content {
+            padding: 30px;
+        }
+        
+        .course-duration {
+            display: inline-block;
+            background: rgba(220, 38, 38, 0.1);
+            color: var(--secondary);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            border: 1px solid rgba(220, 38, 38, 0.3);
+        }
+        
+        .course-features {
+            list-style: none;
+            margin: 20px 0;
+        }
+        
+        .course-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #333;
+            color: var(--text-secondary);
+            position: relative;
+            padding-right: 25px;
+        }
+        
+        .course-features li::before {
+            content: '✓';
+            position: absolute;
+            right: 0;
+            color: #22c55e;
+            font-weight: bold;
+        }
+        
+        .course-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .course-price {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--secondary);
+            font-weight: bold;
+            margin: 25px 0;
+        }
+        
+        .btn-enroll {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: var(--radius);
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-enroll::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: right 0.5s ease;
+        }
+        
+        .btn-enroll:hover {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            box-shadow: 0 10px 20px rgba(220, 38, 38, 0.3);
+        }
+        
+        .btn-enroll:hover::before {
+            right: 100%;
+        }
+        
+        /* Program Structure */
+        .program-structure-section {
+            margin-bottom: 60px;
+        }
+        
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: var(--gradient);
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+        }
+        
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .timeline-content {
+            background: #1a1a1a;
+            padding: 25px;
+            border-radius: var(--radius);
+            border: 1px solid #333;
+            width: 45%;
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-content:hover {
+            border-color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(220, 38, 38, 0.2);
+        }
+        
+        .timeline-marker {
+            width: 30px;
+            height: 30px;
+            background: var(--gradient);
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            border: 3px solid #1a1a1a;
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-item:hover .timeline-marker {
+            transform: translateX(-50%) scale(1.2);
+            box-shadow: 0 0 15px rgba(220, 38, 38, 0.5);
+        }
+        
+        /* Testimonials */
+        .testimonials-section {
+            margin-bottom: 60px;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background: #1a1a1a;
+            border-radius: var(--radius);
+            padding: 30px;
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            border-color: var(--secondary);
+            transform: translateY(-5px);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: #1a1a1a;
+            border-radius: var(--radius);
+            padding: 60px 40px;
+            text-align: center;
+            border: 1px solid #333;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 60%, rgba(220, 38, 38, 0.05) 100%);
+            z-index: 0;
+        }
+        
+        .cta-title {
+            font-size: 2.5rem;
+            color: var(--text);
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-secondary);
+            border-top: 1px solid #333;
+            margin-top: 40px;
+            position: relative;
+        }
+        
+        .gymbro-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--gradient);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            margin-top: 20px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .gymbro-badge:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(220, 38, 38, 0.3);
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .stats-section {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-item {
+                flex-direction: row !important;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 50px);
+                margin-left: 50px;
+            }
+            
+            .timeline-marker {
+                left: 20px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1><span>Athletic</span> Performance</h1>
+            <div class="subtitle">For Advanced Athletes</div>
+            <p style="max-width: 800px; margin: 0 auto 20px; font-size: 1.2rem; color: var(--text-secondary);">
+                Elite training program designed for serious athletes looking to maximize performance, power, and endurance for competitive sports.
+            </p>
+            <div class="header-badge">
+                <i class="fas fa-trophy"></i> 16-Week Elite Program
+            </div>
+        </div>
+        
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <div class="hero-content">
+                <h2 style="color: var(--secondary); margin-bottom: 20px; font-size: 2rem;">برنامج النخبة للأداء الرياضي</h2>
+                <p style="margin-bottom: 20px; color: var(--text-secondary); font-size: 1.1rem;">
+                    تم تصميم هذا البرنامج خصيصاً للرياضيين المحترفين الذين يسعون لتحقيق أقصى أداء في المنافسات الرياضية. يعتمد البرنامج على أحدث الأبحاث العلمية في فسيولوجيا الرياضة والتغذية المتقدمة.
+                </p>
+                
+                <div style="background: rgba(220, 38, 38, 0.1); padding: 20px; border-radius: var(--radius); margin: 30px 0; border-right: 4px solid var(--secondary);">
+                    <h3 style="color: var(--secondary); margin-bottom: 15px;"><i class="fas fa-bullseye"></i> أهداف البرنامج</h3>
+                    <ul style="list-style: none; color: var(--text-secondary);">
+                        <li style="padding: 8px 0;"><i class="fas fa-check" style="color: #22c55e;"></i> زيادة القوة والانفجار العضلي</li>
+                        <li style="padding: 8px 0;"><i class="fas fa-check" style="color: #22c55e;"></i> تحسين التحمل والقدرة الهوائية</li>
+                        <li style="padding: 8px 0;"><i class="fas fa-check" style="color: #22c55e;"></i> تحسين سرعة الاستجابة والتنسيق العصبي العضلي</li>
+                        <li style="padding: 8px 0;"><i class="fas fa-check" style="color: #22c55e;"></i> تعزيز التعافي وخفض خطر الإصابات</li>
+                    </ul>
+                </div>
+                
+                <a href="registration.html" class="btn-enroll" style="margin-top: 20px;">
+                    <i class="fas fa-rocket"></i> ابدأ رحلتك نحو القمة
+                </a>
+            </div>
+            
+            <!-- Content Box بدلاً من الصورة -->
+            <div class="content-box">
+                <div class="content-box-header">
+                    <h2>معلومات أساسية عن البرنامج</h2>
+                    <p class="subtitle">أهم النقاط التي يجب أن تعرفها</p>
+                </div>
+                
+                <div class="content-item">
+                    <div class="content-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <div class="content-text">
+                        <h3>المدة الزمنية</h3>
+                        <p>برنامج مدته 16 أسبوعاً، مقسم إلى 4 مراحل تدريبية رئيسية. كل مرحلة مصممة لتحقيق أهداف تدريبية محددة.</p>
+                    </div>
+                </div>
+                
+                <div class="content-item">
+                    <div class="content-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="content-text">
+                        <h3>الفئة المستهدفة</h3>
+                        <p>الرياضيون المحترفون، لاعبو المستوى المتقدم، والمتنافسون في المسابقات الرياضية المختلفة.</p>
+                    </div>
+                </div>
+                
+                <div class="content-item">
+                    <div class="content-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="content-text">
+                        <h3>معدل التحسن المتوقع</h3>
+                        <p>تحسن بنسبة 20-40% في مؤشرات الأداء الرياضي المختلفة خلال فترة البرنامج.</p>
+                    </div>
+                </div>
+                
+                <div class="content-item">
+                    <div class="content-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <div class="content-text">
+                        <h3>شروط الالتحاق</h3>
+                        <p>التزام كامل بالبرنامج، سجل رياضي سابق، واستعداد نفسي وجسدي للتدريبات المكثفة.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Stats Section -->
+        <div class="stats-section">
+            <div class="stat-item">
+                <div class="stat-number">16+</div>
+                <div class="stat-label">أسبوع تدريبي</div>
+            </div>
+            
+            <div class="stat-item">
+                <div class="stat-number">95%</div>
+                <div class="stat-label">رضا العملاء</div>
+            </div>
+            
+            <div class="stat-item">
+                <div class="stat-number">40%</div>
+                <div class="stat-label">تحسن في الأداء</div>
+            </div>
+            
+            <div class="stat-item">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">رياضي محترف</div>
+            </div>
+        </div>
+        
+        <!-- Features Section -->
+        <div class="features-section">
+            <h2 class="section-title">مميزات البرنامج</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3 class="feature-title">Performance Training</h3>
+                    <p style="color: var(--text-secondary);">
+                        تدريبات مكثفة تركز على القوة الانفجارية، السرعة، والتنسيق العصبي العضلي. يشمل البرنامج تدريبات بليومتركس، رفع الأثقال المتقدم، وتدريبات السرعة.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-apple-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Peak Nutrition</h3>
+                    <p style="color: var(--text-secondary);">
+                        خطة تغذية متقدمة تراعي توقيت المغذيات، المكملات العلمية، والتغذية حول التدريب. تركز على تحسين الأداء وتقليل الالتهابات.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="feature-title">Mental Training</h3>
+                    <p style="color: var(--text-secondary);">
+                        تدريبات عقلية متقدمة تشمل التصور العقلي، التحكم في القلق التنافسي، وتقنيات التركيز لتحقيق أقصى أداء في المواقف الحاسمة.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Courses Section -->
+        <div class="courses-section">
+            <h2 class="section-title">الكورسات المتخصصة</h2>
+            <div class="courses-grid">
+                <div class="course-card">
+                    <div class="course-header">
+                        <h3>أداء القوة الانفجارية</h3>
+                    </div>
+                    <div class="course-content">
+                        <span class="course-duration"><i class="far fa-clock"></i> 6 أسابيع</span>
+                        <p style="color: var(--text-secondary); margin-bottom: 20px;">
+                            كورس متخصص لتحسين القوة الانفجارية والسرعة اللازمة للرياضات التنافسية.
+                        </p>
+                        <ul class="course-features">
+                            <li>تدريبات بليومتركس متقدمة</li>
+                            <li>تحليل الفيديو للأداء</li>
+                            <li>جلسات تدريبية أسبوعية</li>
+                            <li>دعم مباشر من المدربين</li>
+                        </ul>
+                        <div class="course-price">$199</div>
+                        <a href="registration.html?course=strength" class="btn-enroll">التسجيل الآن</a>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-header">
+                        <h3>التغذية للرياضيين</h3>
+                    </div>
+                    <div class="course-content">
+                        <span class="course-duration"><i class="far fa-clock"></i> 4 أسابيع</span>
+                        <p style="color: var(--text-secondary); margin-bottom: 20px;">
+                            كورس تغذية متخصص للرياضيين لتحسين الأداء والتعافي.
+                        </p>
+                        <ul class="course-features">
+                            <li>توقيت المغذيات</li>
+                            <li>المكملات العلمية</li>
+                            <li>التغذية حول التدريب</li>
+                            <li>خطط تغذية مخصصة</li>
+                        </ul>
+                        <div class="course-price">$149</div>
+                        <a href="registration.html?course=nutrition" class="btn-enroll">التسجيل الآن</a>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-header">
+                        <h3>البرنامج الكامل</h3>
+                    </div>
+                    <div class="course-content">
+                        <span class="course-duration"><i class="far fa-clock"></i> 16 أسبوع</span>
+                        <p style="color: var(--text-secondary); margin-bottom: 20px;">
+                            البرنامج الشامل للأداء الرياضي يشمل التدريب والتغذية والمتابعة.
+                        </p>
+                        <ul class="course-features">
+                            <li>كل مميزات البرامج السابقة</li>
+                            <li>متابعة أسبوعية شخصية</li>
+                            <li>تحليل أداء شهري</li>
+                            <li>خصم 20% على المكملات</li>
+                        </ul>
+                        <div class="course-price">$399</div>
+                        <a href="registration.html?course=full" class="btn-enroll">التسجيل الآن</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Program Structure -->
+        <div class="program-structure-section">
+            <h2 class="section-title">هيكل البرنامج</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3 style="color: var(--secondary); margin-bottom: 10px;">الأسابيع 1-4: مرحلة التأهيل</h3>
+                        <p style="color: var(--text-secondary);">
+                            بناء القاعدة البدنية، تصحيح الوضعيات، وتحسين الحركة الأساسية. التركيز على التقنية والتعافي.
+                        </p>
+                    </div>
+                    <div class="timeline-marker"></div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3 style="color: var(--secondary); margin-bottom: 10px;">الأسابيع 5-8: مرحلة التطوير</h3>
+                        <p style="color: var(--text-secondary);">
+                            زيادة حجم وشدة التدريبات، إدخال تدريبات القوة الانفجارية، وتحسين التحمل العضلي.
+                        </p>
+                    </div>
+                    <div class="timeline-marker"></div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3 style="color: var(--secondary); margin-bottom: 10px;">الأسابيع 9-12: مرحلة الذروة</h3>
+                        <p style="color: var(--text-secondary);">
+                            التدريبات الأكثر كثافة، محاكاة ظروف المنافسة، والوصول لأقصى أداء.
+                        </p>
+                    </div>
+                    <div class="timeline-marker"></div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3 style="color: var(--secondary); margin-bottom: 10px;">الأسابيع 13-16: مرحلة المنافسة</h3>
+                        <p style="color: var(--text-secondary);">
+                            الحفاظ على الأداء، تقليل حجم التدريب، والاستعداد النفسي والبدني للمنافسات.
+                        </p>
+                    </div>
+                    <div class="timeline-marker"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Testimonials -->
+        <div class="testimonials-section">
+            <h2 class="section-title">آراء الرياضيين</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "بفضل برنامج GYMBROS استطعت تحسين قفزتي العمودية بمقدار 15 سم في 16 أسبوعاً فقط. البرنامج غير مستواي التنافسي بالكامل."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AA</div>
+                        <div>
+                            <div style="font-weight: bold;">أحمد العلي</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">لاعب كرة سلة محترف</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "خطة التغذية كانت مفصلية في تحسين تعافيي بين التدريبات. لم أعد أعاني من الإجهاد المزمن خلال الموسم التنافسي."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SK</div>
+                        <div>
+                            <div style="font-weight: bold;">سارة الكندري</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">عداءة مسافات متوسطة</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "التدريبات الانفجارية حسنت سرعة انطلاقي بشكل ملحوظ. البرنامج العلمي والمدروس جعلني أكثر ثقة في المنافسات."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MH</div>
+                        <div>
+                            <div style="font-weight: bold;">محمد الحمادي</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">لاعب كرة قدم</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2 class="cta-title">هل أنت مستعد لرفع مستوى أدائك؟</h2>
+            <p class="cta-subtitle">
+                انضم إلى نخبة الرياضيين الذين حققوا نتائج استثنائية مع برنامج GYMBROS للأداء الرياضي. ابدأ رحلتك نحو القمة اليوم.
+            </p>
+            <a href="registration.html" class="btn-enroll" style="max-width: 300px; margin: 0 auto;">
+                <i class="fas fa-rocket"></i> ابدأ البرنامج الآن
+            </a>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p>© 2024 GYMBROS Athletic Performance Program. جميع الحقوق محفوظة.</p>
+            <div class="gymbro-badge">
+                <i class="fas fa-dumbbell"></i>
+                <span>GYMBROS ELITE ATHLETICS</span>
+            </div>
+        </div>
+    </div>
+    <a href="index.html" class="ath-btn">Home</a>
+     <style> 
+      
+.ath-btn {
+    color: white;
+    background-color: red;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: 600;
+    display: inline-block;
+    padding: 0.9375em 2.1875em;
+    letter-spacing: 1px;
+    border-radius: 15px;
+    transition: 0.5s ease;
+    margin-right: 670px;
+    margin-top: 80px;
+}
+</style> 
+</body>
+</html>

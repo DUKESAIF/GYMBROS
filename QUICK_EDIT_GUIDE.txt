@@ -1,0 +1,122 @@
+═══════════════════════════════════════════════════════════════
+              QUICK EDIT GUIDE - GYMBROS WEBSITE
+═══════════════════════════════════════════════════════════════
+
+🎨 MOST COMMON EDITS:
+─────────────────────
+
+1️⃣ CHANGE MAIN COLORS
+   File: styles.css
+   Lines: 16-26
+   
+   --color-primary: hsl(16, 100%, 50%);      ← Change this
+   --color-secondary: hsl(0, 84%, 60%);      ← Change this
+   --color-accent: hsl(25, 95%, 53%);        ← Change this
+
+2️⃣ CHANGE WEBSITE NAME
+   File: index.html
+   Lines: 31, 41, 387
+   
+   Find: GYMBROS
+   Replace with: YOUR GYM NAME
+
+3️⃣ CHANGE HERO IMAGE
+   File: index.html
+   Line: ~70
+   
+   <img src="YOUR_IMAGE_URL_HERE" alt="Athlete">
+
+4️⃣ EDIT HERO TEXT
+   File: index.html
+   Lines: 76-90
+   
+   <h1 class="hero-title">
+       BUILD YOUR<br>
+       <span class="text-gradient">DREAM PHYSIQUE</span>
+   </h1>
+
+5️⃣ EDIT PRICES
+   File: index.html
+   Search for: class="product-price"
+   
+   <div class="product-price">$49.99</div>  ← Change price
+
+6️⃣ ADD DISCOUNT TO PRODUCT
+   File: index.html
+   Add inside <div class="product-image">:
+   
+   <div class="discount-badge">-25%</div>
+
+7️⃣ CHANGE BUTTON TEXT
+   File: index.html
+   Search for button text you want to change
+   
+   <button>Join Now</button>  ← Change text here
+
+8️⃣ ADD YOUR SOCIAL MEDIA LINKS
+   File: index.html
+   Lines: 394-401
+   
+   <a href="YOUR_INSTAGRAM_URL">📷</a>
+   <a href="YOUR_FACEBOOK_URL">📘</a>
+
+9️⃣ CHANGE FOOTER TEXT
+   File: index.html
+   Line: ~417
+   
+   <p>© 2024 GYMBROS. All rights reserved.</p>
+
+🔟 ADD YOUR CONTACT EMAIL
+   File: index.html
+   Line: ~408
+   
+   Replace newsletter form with contact info
+
+═══════════════════════════════════════════════════════════════
+
+📝 FILE STRUCTURE:
+──────────────────
+
+GYMBROS_Website_Complete/
+├── index.html          ← Website structure & content
+├── styles.css          ← All colors, fonts, layouts
+├── script.js           ← Interactive features
+├── README.md           ← Full documentation
+├── INSTRUCTIONS.txt    ← Detailed setup guide
+└── QUICK_EDIT_GUIDE.txt ← This file
+
+═══════════════════════════════════════════════════════════════
+
+🎯 EDITING WORKFLOW:
+────────────────────
+
+1. Make a backup copy of files before editing
+2. Open file in text editor (VS Code, Notepad++, etc.)
+3. Find the section using Ctrl+F (Find)
+4. Make your changes
+5. Save the file
+6. Refresh browser to see changes
+
+═══════════════════════════════════════════════════════════════
+
+✅ RECOMMENDED TEXT EDITORS:
+───────────────────────────
+
+• VS Code (Free) - Best option
+• Sublime Text (Free trial)
+• Notepad++ (Free) - Windows only
+• Atom (Free)
+• Or any text editor you prefer
+
+═══════════════════════════════════════════════════════════════
+
+💡 PRO TIPS:
+────────────
+
+• Use Ctrl+F to find text quickly
+• Always keep a backup before editing
+• Test in browser after each major change
+• Use browser DevTools (F12) to debug
+• Comments in code start with <!-- -->
+
+═══════════════════════════════════════════════════════════════

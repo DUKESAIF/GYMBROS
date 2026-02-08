@@ -1,0 +1,300 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="stylesheet" href="style.muscle bulding.css">
+    <title>MUSCLE BUILDING</title>
+</head>
+<body>
+    <header>
+        <a href="#" class="logoo"> Muscle Building Guide💪 </a>
+        <nav class="logo1">
+            <a href="index.html"> Home </a>
+        </nav>
+
+    </header>
+
+    <section class="mbmain">
+        <div>
+            <h2>Here You Can Build<br> <span>A Massive Muscles</span> </h2>
+            <p> Building muscle means increasing muscle size and strength through training, proper food, and rest. <br>
+                <br>
+                Key: Train hard + Eat right + Sleep well.
+            </p>
+            <a1 href="index.html" class="cors-start">Get The Course</a1>
+
+            <section class="cards">
+                                               <h2 class="title">Information</h2>
+  <div class="content">
+    <div class="card">
+      <div class="icon"><i class="fa-solid fa-utensils"></i></div>
+      <div class="info">
+        <h3>Nutrition Basics</h3>
+        <p>Eat enough protein, carbs, and healthy fats to help your body grow stronger.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="icon"><i class="fa-solid fa-dumbbell"></i></div>
+      <div class="info">
+        <h3>Basic Exercises</h3>
+        <p>Focus on compound movements like squats, presses, and rows</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="icon"><i class="fa-solid fa-clock"></i></div>
+      <div class="info">
+        <h3>Routine Example</h3>
+        <p>Train 3–4 times a week with full-body or upper/lower workouts</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<h4 class="titl">Nutrition Basics🍽</h4>
+<p>Eat more calories than you burn (small surplus).
+Protein: 1.6–2.2g/kg body weight daily.
+Carbs for energy, healthy fats for hormones.
+Best foods: eggs, chicken, fish, rice, oats, veggies.
+Drink plenty of water!</p>
+<div class="mini-slider">
+  <img src="images/widnut.png" alt="Photo 1" class="active">
+  <img src="images/nutprotien.png" alt="Photo 2">
+  <img src="images/nutveggies.png" alt="Photo 3">
+</div>
+
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background: #f7f7f7;
+  }
+
+  .mini-slider {
+    position: relative;
+    width: 90%;
+    max-width: 740px;
+    height: 40vh;           /* ارتفاع ثابت 60% من شاشة العرض */
+    margin: 50px auto;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    background: #000;
+  }
+
+  .mini-slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;      /* يحافظ على أبعاد الصورة بدون تشويه */
+    object-position: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    border-radius: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #000;         /* لتغطية المساحات الفارغة */
+  }
+
+  .mini-slider img.active {
+    opacity: 1;
+    z-index: 1;
+  }
+</style>
+
+<script>
+  const slides = document.querySelectorAll('.mini-slider img');
+  let index = 0;
+
+  function showNextImage() {
+    slides[index].classList.remove('active');
+    index = (index + 1) % slides.length;
+    slides[index].classList.add('active');
+  }
+
+  window.addEventListener('load', () => {
+    slides[0].classList.add('active');   // تأكد من ظهور أول صورة بعد تحميل الصفحة
+    setInterval(showNextImage, 3000);
+  });
+</script>
+
+<h5 class="titl"> Basic Exercises🏋️‍♂️</h5>
+<p>Beginners (3 days/week):
+Squat
+Bench Press / Push-ups
+Deadlift
+Row / Pull-up
+Shoulder Press
+Plank or Crunches
+Goal: 8–12 reps × 3 sets each.
+Increase weight slowly over time.</p>
+
+<div class="slider-wrapper">
+  <img src="images/basichabil.png" alt="Photo 1" class="slide-visible">
+  <img src="images/basichammer.png" alt="Photo 2" class="slide-hidden">
+  <img src="images/basicbar.png" alt="Photo 3" class="slide-hidden">
+</div>
+
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+  }
+
+
+.slider-wrapper {
+    position: relative;
+    width: 90%;
+    max-width: 740px;
+    height: 40vh;                 /* ارتفاع ثابت 40% من الشاشة */
+    margin: 50px auto;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    background-color: #000;
+  }
+
+  .slider-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;          /* يحافظ على أبعاد الصورة بدون تشويه */
+    object-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    border-radius: 20px;
+    background-color: #000;
+  }
+
+  .slider-wrapper img.slide-visible {
+    opacity: 1;
+    z-index: 1;
+  }
+</style>
+
+<script>
+  (function() {
+    const sliderImages = document.querySelectorAll('.slider-wrapper img');
+    let currentIndex = 0;
+
+    function showNextSlide() {
+      sliderImages[currentIndex].classList.remove('slide-visible');
+      sliderImages[currentIndex].classList.add('slide-hidden');
+
+      currentIndex = (currentIndex + 1) % sliderImages.length;
+
+      sliderImages[currentIndex].classList.remove('slide-hidden');
+      sliderImages[currentIndex].classList.add('slide-visible');
+    }
+
+    window.addEventListener('load', () => {
+      sliderImages[0].classList.add('slide-visible');
+      setInterval(showNextSlide, 3000);
+    });
+  })();
+</script>
+
+
+
+
+<h5 class="titl">Routine Example🕐</h5>
+<p class="polos">(3 workouts weekly = great start!)</p>
+
+
+
+
+
+
+
+
+<title>Muscle Building Workout</title>
+  <style>
+    .custom-table {
+      width: 80%;
+      margin: 30px auto;
+      border-collapse: collapse;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    .custom-table th, .custom-table td {
+      border: 1px solid red;
+      padding: 10px;
+    }
+
+    .custom-table th {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .custom-table tr:nth-child(even) {
+      background-color: black;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <h3 class="Routine">🏋️‍♂️ Example Workout Table</h3>
+
+  <table class="custom-table">
+    <thead>
+      <tr>
+        <th>Exercise</th>
+        <th>Sets</th>
+        <th>Reps</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Squat</td>
+        <td>3</td>
+        <td>8–12</td>
+      </tr>
+      <tr>
+        <td>Bench Press / Push-ups</td>
+        <td>3</td>
+        <td>8–12</td>
+      </tr>
+      <tr>
+        <td>Deadlift</td>
+        <td>3</td>
+        <td>8–12</td>
+      </tr>
+      <tr>
+        <td>Bent-over Row / Pull-up</td>
+        <td>3</td>
+        <td>8–12</td>
+      </tr>
+      <tr>
+        <td>Shoulder Press</td>
+        <td>3</td>
+        <td>8–12</td>
+      </tr>
+      <tr>
+        <td>Plank / Crunches</td>
+        <td>3</td>
+        <td>30–60 sec</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="text-align:center; width: 80%; margin: auto;">
+    <strong>Note:</strong> This is a Full Body routine suitable for 3 days per week (e.g., Monday / Wednesday / Friday). Follow <strong>3 sets of 8–12 reps</strong> for each exercise, and increase the weight gradually when it becomes easy.
+  </p>
+
+            <a href="index.html" class="cors-btn">Get The Course</a>
+        </div>
+    </section>
+</body>
+</html>

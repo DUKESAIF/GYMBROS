@@ -1,0 +1,923 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Colors */
+    --color-background: hsl(0, 0%, 7%);
+    --color-foreground: hsl(0, 0%, 98%);
+    --color-primary: hsl(16, 100%, 50%);
+    --color-secondary: hsl(0, 84%, 60%);
+    --color-accent: hsl(25, 95%, 53%);
+    --color-muted: hsl(0, 0%, 15%);
+    --color-muted-foreground: hsl(0, 0%, 70%);
+    --color-card: hsl(0, 0%, 10%);
+    --color-border: hsl(0, 0%, 20%);
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(16, 100%, 50%), hsl(0, 84%, 60%));
+    --gradient-hero: linear-gradient(90deg, hsla(0, 0%, 7%, 0.95), hsla(0, 0%, 7%, 0.4));
+    --gradient-card: linear-gradient(180deg, hsl(0, 0%, 12%), hsl(0, 0%, 8%));
+    
+    /* Shadows */
+    --shadow-glow: 0 0 30px hsla(16, 100%, 50%, 0.3);
+    --shadow-card: 0 10px 40px -10px hsla(0, 0%, 0%, 0.5);
+    
+    /* Transitions */
+    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Bebas Neue', cursive;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: hsla(0, 0%, 7%, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.nav-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo-icon {
+    width: 32px;
+    height: 32px;
+    color: var(--color-primary);
+}
+
+.logo-text {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 1.875rem;
+    letter-spacing: 0.1em;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: var(--color-foreground);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--color-primary);
+}
+
+.btn-primary {
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    padding: 0.625rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity var(--transition);
+    box-shadow: var(--shadow-glow);
+}
+
+.btn-primary:hover {
+    opacity: 0.9;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 80px;
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+}
+
+.hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-hero);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+}
+
+.hero-text {
+    max-width: 48rem;
+}
+
+.hero-badge {
+    display: inline-block;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: hsla(16, 100%, 50%, 0.2);
+    border: 1px solid hsla(16, 100%, 50%, 0.5);
+    border-radius: 9999px;
+}
+
+.hero-badge span {
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+.hero-title {
+    font-size: 5rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+}
+
+.hero-description {
+    font-size: 1.25rem;
+    color: var(--color-muted-foreground);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    max-width: 42rem;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 4rem;
+    flex-wrap: wrap;
+}
+
+.btn-hero-primary {
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity var(--transition);
+    box-shadow: var(--shadow-glow);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-hero-primary:hover {
+    opacity: 0.9;
+}
+
+.btn-hero-secondary {
+  background-color: hsla(0, 0%, 10%, 0.8);
+  backdrop-filter: blur(8px);
+  color: var(--color-foreground);
+  border: 1px solid var(--color-border);
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-hero-secondary a {
+  color: inherit;             
+  text-decoration: none;      
+}
+
+.btn-hero-secondary a:hover {
+  color: inherit;              
+  text-decoration: none;       
+}
+
+.btn-hero-secondary:hover {
+    background-color: var(--color-card);
+}
+
+.hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid hsla(0, 0%, 20%, 0.5);
+}
+
+.stat-number {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 2.25rem;
+    color: var(--color-primary);
+    margin-bottom: 0.25rem;
+}
+
+.stat-label {
+    font-size: 0.875rem;
+    color: var(--color-muted-foreground);
+}
+
+/* Section Styles */
+.section {
+    padding: 6rem 0;
+}
+
+.section-alt {
+    background-color: hsla(0, 0%, 15%, 0.3);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-badge {
+    display: inline-block;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: hsla(16, 100%, 50%, 0.2);
+    border: 1px solid hsla(16, 100%, 50%, 0.5);
+    border-radius: 9999px;
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+.section-badge.secondary {
+    background-color: hsla(0, 84%, 60%, 0.2);
+    border-color: hsla(0, 84%, 60%, 0.5);
+    color: var(--color-secondary);
+}
+
+.section-badge.accent {
+    background-color: hsla(25, 95%, 53%, 0.2);
+    border-color: hsla(25, 95%, 53%, 0.5);
+    color: var(--color-accent);
+}
+
+.section-title {
+    font-size: 3.75rem;
+    margin-bottom: 1rem;
+}
+
+.section-description {
+    font-size: 1.125rem;
+    color: var(--color-muted-foreground);
+    max-width: 42rem;
+    margin: 0 auto;
+}
+
+/* Programs Grid */
+.programs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.program-card {
+    background: var(--gradient-card);
+    border-radius: 0.75rem;
+    padding: 2rem;
+    border: 1px solid var(--color-border);
+    transition: all var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+
+.program-card:hover {
+    border-color: hsla(16, 100%, 50%, 0.5);
+    box-shadow: var(--shadow-card);
+}
+
+.program-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.program-icon.primary {
+    background-color: hsla(16, 100%, 50%, 0.1);
+    border: 1px solid hsla(16, 100%, 50%, 0.5);
+    color: var(--color-primary);
+}
+
+.program-icon.secondary {
+    background-color: hsla(0, 84%, 60%, 0.1);
+    border: 1px solid hsla(0, 84%, 60%, 0.5);
+    color: var(--color-secondary);
+}
+
+.program-icon.accent {
+    background-color: hsla(25, 95%, 53%, 0.1);
+    border: 1px solid hsla(25, 95%, 53%, 0.5);
+    color: var(--color-accent);
+}
+
+.program-card h3 {
+    font-size: 1.875rem;
+    margin-bottom: 0.5rem;
+}
+
+.program-subtitle {
+    font-size: 0.875rem;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+}
+
+.program-description {
+    color: var(--color-muted-foreground);
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+.program-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.program-features span {
+    padding: 0.25rem 0.75rem;
+    background-color: var(--color-muted);
+    border-radius: 9999px;
+    font-size: 0.875rem;
+}
+
+.btn-enroll {
+  background-color: hsla(0, 0%, 10%, 0.8);
+  backdrop-filter: blur(8px);
+  color: var(--color-foreground);
+  border: 1px solid var(--color-border);
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* 🔹 هذا الجزء الجديد يحل المشكلة */
+.btn-enroll a {
+  color: inherit;              /* نفس لون الزر */
+  text-decoration: none;       /* يزيل الخط الأزرق */
+}
+
+.btn-enroll a:hover {
+  color: inherit;              /* حتى عند التمرير لا يتغير اللون */
+  text-decoration: none;       /* يضمن عدم ظهور الخط */
+}
+.btn-enroll:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+/* Courses Grid */
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+.course-card {
+    background: var(--gradient-card);
+    border-radius: 0.75rem;
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+    transition: all var(--transition);
+}
+
+.course-card:hover {
+    border-color: hsla(16, 100%, 50%, 0.5);
+    box-shadow: var(--shadow-card);
+}
+
+.course-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    padding-bottom: 1rem;
+}
+
+.course-level {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+.course-badge {
+    font-size: 1.25rem;
+}
+
+.course-card h3 {
+    font-size: 1.5rem;
+    padding: 0 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.course-description {
+    font-size: 0.875rem;
+    color: var(--color-muted-foreground);
+    padding: 0 1.5rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.course-meta {
+    display: flex;
+    gap: 1rem;
+    padding: 0 1.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.875rem;
+    color: var(--color-muted-foreground);
+}
+
+.course-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border-top: 1px solid var(--color-border);
+}
+
+.course-price {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 1.5rem;
+    color: var(--color-primary);
+}
+
+.btn-enroll-small {
+  background-color: hsla(0, 0%, 10%, 0.8);
+  backdrop-filter: blur(8px);
+  color: var(--color-foreground);
+  border: 1px solid var(--color-border);
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* 🔹 هذا الجزء الجديد يحل المشكلة */
+.btn-enroll-small a {
+  color: inherit;              /* نفس لون الزر */
+  text-decoration: none;       /* يزيل الخط الأزرق */
+}
+
+.btn-enroll-small a:hover {
+  color: inherit;              /* حتى عند التمرير لا يتغير اللون */
+  text-decoration: none;       /* يضمن عدم ظهور الخط */
+}
+
+.btn-enroll-small:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+/* Nutrition Grid */
+.nutrition-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+}
+
+.nutrition-card {
+    background: var(--gradient-card);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    border: 1px solid var(--color-border);
+    transition: all var(--transition);
+}
+
+.nutrition-card:hover {
+    border-color: hsla(16, 100%, 50%, 0.5);
+    box-shadow: var(--shadow-card);
+}
+
+.nutrition-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid;
+}
+
+.nutrition-icon.primary {
+    background-color: hsla(16, 100%, 50%, 0.1);
+    border-color: hsla(16, 100%, 50%, 0.5);
+}
+
+.nutrition-icon.secondary {
+    background-color: hsla(0, 84%, 60%, 0.1);
+    border-color: hsla(0, 84%, 60%, 0.5);
+}
+
+.nutrition-icon.accent {
+    background-color: hsla(25, 95%, 53%, 0.1);
+    border-color: hsla(25, 95%, 53%, 0.5);
+}
+
+.nutrition-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.nutrition-card p {
+    color: var(--color-muted-foreground);
+    line-height: 1.6;
+}
+
+.cta-box {
+    background: var(--gradient-primary);
+    border-radius: 0.75rem;
+    padding: 3rem;
+    text-align: center;
+}
+
+.cta-box h3 {
+    font-size: 2.25rem;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.cta-box p {
+    color: hsla(0, 0%, 100%, 0.9);
+    margin-bottom: 1.5rem;
+    max-width: 42rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-cta {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color var(--transition);
+}
+
+.btn-cta:hover {
+    background-color: var(--color-card);
+}
+
+/* Products Grid */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+.product-card {
+    background: var(--gradient-card);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    transition: all var(--transition);
+}
+
+.product-card:hover {
+    border-color: hsla(16, 100%, 50%, 0.5);
+    box-shadow: var(--shadow-card);
+}
+
+.product-image {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    background-color: hsla(0, 0%, 15%, 0.5);
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition);
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.05);
+}
+
+.discount-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-color: var(--color-secondary);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+.product-info {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-category {
+    font-size: 0.75rem;
+    color: var(--color-primary);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.product-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.product-description {
+    font-size: 0.875rem;
+    color: var(--color-muted-foreground);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    flex-grow: 1;
+}
+
+.product-rating {
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+}
+
+.product-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border);
+}
+
+.product-price {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 1.5rem;
+    color: var(--color-primary);
+}
+
+.product-original-price {
+    font-size: 0.875rem;
+    color: var(--color-muted-foreground);
+    text-decoration: line-through;
+}
+
+.btn-add-cart {
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    padding: 0.625rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-add-cart:hover {
+    opacity: 0.9;
+}
+
+/* Footer */
+.footer {
+    background-color: var(--color-card);
+    border-top: 1px solid var(--color-border);
+    padding: 3rem 0 0;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-brand p {
+    font-size: 0.875rem;
+    color: var(--color-muted-foreground);
+    margin: 1rem 0;
+}
+
+
+.social-links {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.social-links a {
+    width: 40px;
+    height: 40px;
+    border-radius: 9999px;
+    background-color: var(--color-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all var(--transition);
+    font-size: 1.25rem;
+}
+
+.social-links a:hover {
+    background-color: var(--color-primary);
+}
+
+.footer-links h4 {
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+}
+
+.footer-links a {
+    display: block;
+    color: var(--color-muted-foreground);
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    transition: color var(--transition);
+}
+
+.footer-links a:hover {
+    color: var(--color-primary);
+}
+
+.footer-newsletter h4 {
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+}
+
+.footer-newsletter p {
+    font-size: 0.875rem;
+    color: var(--color-muted-foreground);
+    margin-bottom: 1rem;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.newsletter-form input {
+    flex: 1;
+    background-color: var(--color-muted);
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    color: var(--color-foreground);
+}
+
+.newsletter-form input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+}
+
+.newsletter-form button {
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: opacity var(--transition);
+    font-size: 1.25rem;
+}
+
+.newsletter-form button:hover {
+    opacity: 0.9;
+}
+
+.footer-bottom {
+    padding: 2rem 0;
+    border-top: 1px solid var(--color-border);
+    text-align: center;
+}
+
+.footer-bottom p {
+    font-size: 0.875rem;
+    color: var(--color-muted-foreground);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    
+    .hero-title {
+        font-size: 3rem;
+    }
+    
+    .hero-description {
+        font-size: 1rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+    }
+    
+    .hero-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .section-title {
+        font-size: 2.5rem;
+    }
+    
+    .programs-grid,
+    .courses-grid,
+    .nutrition-grid,
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+
+
+
+
