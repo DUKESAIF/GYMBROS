@@ -1,0 +1,54 @@
+/* ===== Mobile & Tablet Fix ===== */
+@media (max-width: 1024px) {
+
+  body {
+    overflow-x: hidden;
+  }
+
+  * {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  img, video {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transform: translateY(15%);
+  }
+
+}
+
+/* ===== Mobile Only ===== */
+@media (max-width: 768px) {
+
+  h1 { font-size: 28px !important; }
+  h2 { font-size: 22px !important; }
+  h3 { font-size: 18px !important; }
+
+  p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  nav, header {
+    flex-wrap: wrap;
+  }
+
+  button,
+  .btn,
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+}
+
+/* ===== Small Phones ===== */
+@media (max-width: 480px) {
+
+  h1 { font-size: 24px !important; }
+  p  { font-size: 15px; }
+
+}
